@@ -2293,6 +2293,207 @@ b,strong{font-weight:700}
 .wl-m,.wl-bon{background:#fff!important}
 .wl-m.on,.wl-bon.on{background:var(--hov1)!important}
 .wl-seg{background:none!important}
+/* ================= COMIC DEEP DIVE ================= */
+:root{--burst:polygon(50% 0,61% 22%,85% 8%,78% 33%,100% 38%,80% 54%,96% 76%,70% 72%,64% 100%,50% 80%,36% 100%,30% 72%,4% 76%,20% 54%,0 38%,22% 33%,15% 8%,39% 22%);
+ --rays:repeating-conic-gradient(from 0deg at 50% 50%,#ffd21f 0 6deg,#ffb800 6deg 12deg);
+ --rays-r:repeating-conic-gradient(from 0deg at 30% 60%,#e8202a 0 5deg,#c2121b 5deg 10deg)}
+@keyframes wob{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(1.2deg) translateY(-2px)}}
+@keyframes boing{0%{transform:scale(.4) rotate(-20deg)}60%{transform:scale(1.15) rotate(8deg)}100%{transform:scale(1) rotate(-6deg)}}
+@keyframes shake{0%,100%{transform:rotate(0)}20%{transform:rotate(-4deg) scale(1.04)}40%{transform:rotate(4deg) scale(1.06)}60%{transform:rotate(-2deg)}80%{transform:rotate(1deg)}}
+@keyframes zap{0%,100%{opacity:1}50%{opacity:.75}}
+
+/* ---------- шапка: лента комикса ---------- */
+#hdr{background:var(--yel)!important;background-image:var(--ht-red)!important;border-bottom:4px solid #141414!important}
+#hdr::after{background:var(--yel);-webkit-mask:linear-gradient(90deg,#000 45%,transparent 85%);mask:linear-gradient(90deg,#000 45%,transparent 85%)}
+.logo{transform:rotate(-3deg);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.logo:hover{transform:rotate(2deg) scale(1.06)}
+/* кошелёк = один бабл */
+#hdr .wallet{background:#fff!important;border:3px solid #141414!important;border-radius:26px!important;padding:3px;gap:4px;overflow:visible!important;height:52px!important;align-items:center}
+#hdr .wallet .bal{background:none!important;border:0!important;min-width:0;font-family:var(--font-display);font-size:22px!important;letter-spacing:1px;padding:0 6px 0 10px;color:#141414!important}
+#hdr .wallet .b,#hdr .dep{height:40px!important;border-radius:20px!important;border:3px solid #141414!important;background:var(--grn)!important;color:#141414!important;font-size:19px!important;padding:0 16px}
+#hdr .wallet .b:hover{animation:shake .45s}
+#hdr .wallet .b::after{display:none}
+#hdr .wallet::after{content:"";position:absolute;left:30px;bottom:-11px;width:16px;height:16px;background:#fff;border-right:3px solid #141414;border-bottom:3px solid #141414;transform:skewX(-30deg) rotate(45deg)}
+#hdr .wallet{position:relative}
+#hdr .me>span:first-child{font-family:var(--font-display);font-size:20px;letter-spacing:1px}
+#hdr .me>span:last-child{border:3px solid #141414;border-radius:50%;background:var(--blu)!important}
+
+/* ---------- боковое меню: стопка кадров ---------- */
+#nav1{transform:rotate(-.8deg)}#nav2{transform:rotate(.7deg)}
+.side .modes{gap:8px}
+.side .modes .b{transform:rotate(-2deg)}.side .modes .b+.b{transform:rotate(2deg)}
+.nav{font-family:var(--font-display)!important;font-size:20px!important;letter-spacing:1px;text-transform:uppercase;font-weight:400!important;border-radius:10px}
+.nav.on{background:var(--yel)!important;border:3px solid #141414;transform:rotate(-1.5deg) scale(1.03)}
+.nav:hover:not(.on){background:var(--hov1)!important;transform:translateX(3px)}
+.nav .ic{color:var(--red)!important}
+#dock{display:none!important}
+
+/* ---------- заголовки страниц: крупный леттеринг ---------- */
+.ph{position:relative;padding:18px 0 6px}
+.ph h1{font-size:64px!important;line-height:.95;color:var(--yel)!important;-webkit-text-stroke:3px #141414;paint-order:stroke fill;transform:rotate(-2deg);transform-origin:left;display:inline-flex;align-items:center;gap:14px}
+.ph h1 .ic{-webkit-text-stroke:0;width:58px;height:58px;display:grid;place-items:center;background:var(--red);color:#fff!important;border:3px solid #141414;clip-path:var(--burst);padding:12px}
+.ph small{display:inline-block;margin-left:18px;background:#fff;border:3px solid #141414;padding:4px 12px;font-weight:700;transform:rotate(1deg);color:#141414!important}
+
+/* ---------- секции: капшн-плашки, разные цвета ---------- */
+.sec-h h2{font-size:32px!important;padding:6px 16px 4px!important}
+.sec:nth-of-type(3n+1) .sec-h h2{background:var(--yel)}
+.sec:nth-of-type(3n+2) .sec-h h2{background:#fff;transform:rotate(1.2deg)}
+.sec:nth-of-type(3n) .sec-h h2{background:var(--blu);color:#fff!important;transform:rotate(-1deg)}
+.sec:nth-of-type(3n) .sec-h h2 .ic{color:var(--yel)!important}
+.sec-h h2 .ic{animation:wob 2.8s ease-in-out infinite}
+
+/* ---------- герой: рамка кадра + взрыв ---------- */
+#hero{border:5px solid #141414!important;transform:rotate(-.4deg);overflow:visible!important;position:relative}
+#hero::after{content:"POW!";position:absolute;z-index:6;right:-14px;top:-22px;width:120px;height:110px;display:grid;place-items:center;font:400 30px/1 var(--font-display);color:#141414;background:var(--yel);clip-path:var(--burst);transform:rotate(12deg);animation:boing .7s cubic-bezier(.3,1.6,.5,1) both,wob 3s 1s ease-in-out infinite;pointer-events:none}
+#hero::before{content:"";position:absolute;z-index:5;right:-20px;top:-28px;width:132px;height:122px;background:#141414;clip-path:var(--burst);transform:rotate(12deg);animation:boing .7s cubic-bezier(.3,1.6,.5,1) both;pointer-events:none}
+#hero .slide .b{font-size:26px!important;height:58px!important}
+
+/* ---------- плитки категорий: разноцветные кадры ---------- */
+.tiles>*{transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+.tiles>*:nth-child(1){background:var(--yel)!important}
+.tiles>*:nth-child(2){background:#fff!important}
+.tiles>*:nth-child(3){background:var(--red)!important;color:#fff}
+.tiles>*:nth-child(4){background:var(--blu)!important;color:#fff}
+.tiles>*:nth-child(5){background:var(--grn)!important}
+.tiles>*:nth-child(6){background:#fff!important}
+.tiles>*:nth-child(3) *,.tiles>*:nth-child(4) *{color:#fff!important}
+.tiles>*:nth-child(odd){transform:rotate(-1.2deg)}.tiles>*:nth-child(even){transform:rotate(1.2deg)}
+.tiles>*:hover{transform:rotate(0) scale(1.05)!important;z-index:2}
+.tiles>*::after{background:radial-gradient(circle,#14141433 1.8px,transparent 2px) 0 0/8px 8px!important}
+.tile .ic{color:#141414!important;opacity:.9}
+
+/* ---------- слоты: карточки-кадры ---------- */
+.slot:nth-child(odd){transform:rotate(-1deg)}.slot:nth-child(even){transform:rotate(1deg)}
+.slot:hover{transform:rotate(0) scale(1.06) translateY(-4px)!important;z-index:3}
+.slot{border-width:4px!important}
+
+/* ---------- Big Win: взрыв с лучами ---------- */
+.bigwin{background:var(--rays)!important;border:4px solid #141414!important;position:relative}
+.bw-l{background:var(--rays-r)!important;clip-path:polygon(0 0,100% 0,92% 50%,100% 100%,0 100%);border-right:0!important;position:relative}
+.bw-l b{font-size:66px!important;-webkit-text-stroke:3px #141414;paint-order:stroke fill;color:var(--yel)!important;transform:rotate(-4deg);display:inline-block}
+.bw-l strong{font-size:40px!important;-webkit-text-stroke:2px #141414;paint-order:stroke fill;transform:rotate(-2deg);display:inline-block}
+.bigwin .wcard{border:3px solid #141414!important;border-radius:16px!important}
+.bw-r{-webkit-mask:none!important;mask:none!important}
+
+/* ---------- матчи, лиги, провайдеры ---------- */
+.mc2{transform:rotate(-.6deg)}.mc2:nth-child(even){transform:rotate(.6deg)}
+.mc2 .odds button,.odds button{background:#fff!important;border:2.5px solid #141414!important;border-radius:12px!important;font-family:var(--font-display);font-size:18px;color:#141414!important}
+.odds button.on,.mc2 .odds button.on{background:var(--yel)!important}
+.lg>*{transition:transform .2s}.lg>*:hover{transform:rotate(-3deg) scale(1.05)}
+.provs>*,.prv{font-family:var(--font-display)!important;font-size:20px;letter-spacing:1px;background:#fff!important}
+
+/* ---------- турниры: таймер как табло ---------- */
+.timer div{background:#141414!important;border:2px solid #141414;border-radius:10px!important}
+.timer b{color:var(--yel)!important;font-family:var(--font-display);font-weight:400!important;font-size:24px!important;letter-spacing:1px}
+.timer small{color:#fff!important}
+.tcard,.tour,.trn{background:#fff!important;border:3px solid #141414!important}
+
+/* ---------- кабинет и формы ---------- */
+.wl-head h2,.wl-card h3{font-size:30px!important}
+.wl-amt input{font-family:var(--font-display)!important;font-size:44px!important}
+.wl-card:nth-child(even){transform:rotate(.3deg)}
+.wl-nav,.atabs{background:none!important}
+.wl-nav button,.atabs>button{font-family:var(--font-display);font-size:18px;letter-spacing:1px;border:3px solid #141414!important;border-radius:20px!important;background:#fff!important;color:#141414!important}
+.wl-nav button.on,.atabs>button.on{background:var(--yel)!important}
+.wl-row b,.wl-sum b{font-family:var(--font-display);font-size:20px;letter-spacing:.5px}
+.wl-sum{background:var(--ht-yel),#fff!important}
+.chipst,.vb,.tag{font-family:var(--font-display);letter-spacing:.5px}
+
+/* ---------- баблы: хвостики и анимация ---------- */
+.b:hover,.wl-cta:not(:disabled):hover{animation:shake .45s}
+.b-red{background:var(--ht-red),var(--red)!important;background-blend-mode:multiply}
+.b-red::before{background:radial-gradient(circle,#ffffff66 1.4px,transparent 1.7px) 0 0/7px 7px!important}
+.wl-cta:not(:disabled){font-size:24px!important;height:60px!important}
+.wl-cta:not(:disabled)::before{content:"!";position:absolute;right:-14px;top:-18px;width:40px;height:40px;display:grid;place-items:center;font:400 24px var(--font-display);background:var(--yel);color:#141414;clip-path:var(--burst);animation:wob 1.6s infinite}
+
+/* ---------- профиль-шит ---------- */
+.pd2 .who b{font-family:var(--font-display);font-size:34px!important;letter-spacing:1px}
+.pd2 .balc{background:var(--rays)!important}
+.pd2 .balc b{font-family:var(--font-display);font-size:44px!important;-webkit-text-stroke:2px #141414;paint-order:stroke fill;color:#fff!important}
+.pd2 .grp .pt b{font-family:var(--font-display);font-size:20px!important;letter-spacing:.5px;font-weight:400!important}
+.pd2 .grp{transform:rotate(-.4deg)}.pd2 .grp:nth-of-type(even){transform:rotate(.4deg)}
+.dlg,.pdraw{border:4px solid #141414!important}
+.dlg::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle,#ffd21f55 1.6px,transparent 1.8px) 0 0/9px 9px;-webkit-mask:linear-gradient(160deg,#000,transparent 35%);mask:linear-gradient(160deg,#000,transparent 35%);border-radius:inherit}
+
+/* ---------- поп-ап профиля (десктоп) ---------- */
+#pop{border:3px solid #141414!important;background:#fff!important}
+#pop button{font-family:var(--font-display);font-size:18px;letter-spacing:.5px}
+
+/* ---------- футер ---------- */
+footer,.foot{background:radial-gradient(circle,#ffd21f22 1.6px,transparent 1.8px) 0 0/9px 9px,#141414!important;border-top:4px solid #141414}
+footer h6{font-family:var(--font-display);font-size:22px;color:var(--yel)!important;letter-spacing:1px}
+
+/* ---------- toast и уведомления ---------- */
+.toast{clip-path:none;border:3px solid #141414!important;border-radius:26px!important;transform-origin:center;animation:boing .45s cubic-bezier(.3,1.6,.5,1)}
+#vban .vb{background:#fff!important;color:#141414!important;border:3px solid #141414!important}
+#vban .vb.warn,#vban .vb.bad{background:var(--yel)!important}
+#vban .vb *{color:#141414!important}
+#vban .vb .b{background:var(--red)!important;color:#fff!important}
+
+/* ---------- мобильная ---------- */
+@media (max-width:900px){
+ .ph h1{font-size:44px!important}
+ #hero::after{width:84px;height:78px;font-size:22px;right:-6px;top:-16px}
+ #hero::before{width:94px;height:88px;right:-11px;top:-21px}
+ #hdr .wallet{height:46px!important}#hdr .wallet .bal{font-size:18px!important}
+ #hdr .wallet .b{height:34px!important;padding:0 8px}
+ .bw-l b{font-size:46px!important}.bw-l strong{font-size:28px!important}
+ #bnav{border-radius:34px!important}
+ #bnav button{font-family:var(--font-display);font-size:13px!important;letter-spacing:.5px}
+ .side,#side{border:4px solid #141414!important}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+#hero .ln,.pk-t span{font-family:var(--font-display)!important;font-weight:400!important;letter-spacing:2px}
+#hero .ln{-webkit-text-stroke:4px #141414;paint-order:stroke fill}
+#hero .ln.big{color:var(--yel)!important}
+.pk-t span{background:var(--yel)!important;color:#141414!important;border:2px solid #141414}
+#hero .snav button,#hero [data-slide]{background:#fff!important;color:#141414!important;border:3px solid #141414!important;border-radius:50%!important}
+#hero .snav span,#hero .snum{background:var(--yel)!important;color:#141414!important;border:3px solid #141414;font-family:var(--font-display)}
+/* ---------- исправления: незаоформленные панели ---------- */
+.p2p-hero,.p2tc,.pcard,.bx-slips .sl,.bx-sum>div,.hx-sum>div,.chipcard,.hrow .prov,.wl-act,.hx-more,.wl-ci,.wl-pend,.wl-split>div,.pays,.match,.box .match,.gt,.okbox,.ax-card,.ax-row,.kr,.lim,.vtier,.vip-t,.cols>*,.sl-cash{border:3px solid #141414!important;border-radius:var(--r-lg)!important;box-shadow:none!important}
+.p2p-hero,.p2tc,.pcard,.bx-slips .sl,.chipcard,.hrow .prov,.pays{background:#fff!important}
+.bx-sum>div,.hx-sum>div,.wl-pend,.wl-split>div,.wl-ci,.wl-act,.hx-more{background:var(--hov1)!important}
+.wl-act.pri{background:var(--grn)!important}
+.p2tc:nth-child(odd){transform:rotate(-.8deg)}.p2tc:nth-child(even){transform:rotate(.8deg)}
+.p2tc b{font-family:var(--font-display);font-weight:400;font-size:34px;letter-spacing:1px}
+.p2p-hero h3,.pcard h3{font-size:34px!important}
+.p2p-g button{border:3px solid #141414!important;border-radius:22px!important;background:#fff!important;font-family:var(--font-display);font-size:18px;letter-spacing:.5px;color:#141414!important}
+.p2p-g button.on{background:var(--red)!important;color:#fff!important}
+.p2p-hero .pi{border:3px solid #141414;clip-path:var(--burst);border-radius:0!important;width:110px!important;height:110px!important}
+.b-ghost,.p2tc .b-ghost,.p2p-hero .b-ghost{background:#fff!important;color:#141414!important}
+.p2tc .seats i.on,.p2tc .seats i{border:2px solid #141414}
+.wl-addn span,.wl-addn>span:first-child{background:var(--yel)!important;color:#141414!important;border:2px solid #141414}
+.wl-logo{border:2px solid #141414}
+.ax-ava i{background:var(--yel)!important;color:#141414!important}
+.lob .search,.lob label.search{border:3px solid #141414!important;border-radius:26px!important}
+.lob .selx{border-radius:26px!important}
+/* подзаголовок страницы не налезает */
+.ph{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px}
+.ph small{margin-left:0;position:relative}
+.ph small::before{content:"";position:absolute;left:-12px;top:50%;margin-top:-8px;width:14px;height:14px;background:#fff;border-left:3px solid #141414;border-bottom:3px solid #141414;transform:rotate(45deg)}
+/* баннер email — капшн */
+#vban{top:calc(var(--hdr-h) + 14px)!important}
+#vban .vb{transform:rotate(-.8deg)}
+#vban .vb b,#vban .vb span{font-family:var(--font)!important;font-style:normal}
+#vban .vb b{font-family:var(--font-display)!important;font-size:18px;letter-spacing:.5px}
+.vb .b{font-size:16px!important}
+/* звёздочка избранного на слотах */
+.slot .fav{border-width:2.5px!important}
+/* стрелки секций */
+.sec-h .arr button,.sec-h [data-scroll]{border:3px solid #141414!important;background:#fff!important;border-radius:50%!important}
+html body .b.b-ghost{border:3px solid #141414!important;background:#fff!important;color:#141414!important}
+html body .b.b-ghost:hover{background:var(--yel)!important}
+@media (min-width:901px){#vban{top:auto!important;bottom:24px!important;right:96px!important;width:min(560px,calc(100vw - 400px))!important}#vban .vb::after{display:none}}
+@media (max-width:900px){
+ #vban{top:auto!important;bottom:calc(96px + env(safe-area-inset-bottom,0px))!important;left:12px!important;right:12px!important;width:auto!important}
+ #vban .vb::after{display:none}
+ .p2p-hero .pi{width:64px!important;height:64px!important}
+ .p2p-hero{display:grid!important;grid-template-columns:64px 1fr;gap:12px}
+ .p2p-hero .bt{grid-column:1/-1}
+ .ph h1 .ic{width:46px;height:46px;padding:9px}
+}
+html body .has-ind>button.b-red,html body .has-ind.red>button.b-red{background:var(--red)!important;color:#fff!important}
+html body .has-ind>button.b-ghost{color:#141414!important}
 
 </style>
 <style id="custom-css" data-own></style>
