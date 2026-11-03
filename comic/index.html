@@ -2534,6 +2534,22 @@ svg.ci{overflow:visible}
 .promo::before{width:170px!important;height:160px!important;right:-46px!important;top:-40px!important}
 .promo>div,.promo h3,.promo p{position:relative;z-index:1}
 .promo p,.promo small{max-width:72%}
+/* ---------- косяки v3 ---------- */
+#hdr .wallet::after{display:none!important}
+.ax-row,.k-row{border:0!important;border-top:2.5px dashed #141414!important;border-radius:0!important;padding:14px 4px!important;background:none!important}
+.ax-list>.ax-row:first-child,.ax-list>.k-row:first-child{border-top:0!important}
+/* крупные иконки, обрезанные краем — как в красном макете */
+.side .modes .b{position:relative;overflow:hidden!important;justify-content:flex-start!important;padding:0 0 0 18px!important;height:56px!important}
+.side .modes .b .ic,.side .modes .b [data-i]{position:absolute!important;right:-14px;top:50%;width:64px!important;height:64px!important;transform:translateY(-50%) rotate(-14deg);pointer-events:none}
+.side .modes .b svg,.side .modes .b svg.ci{width:64px!important;height:64px!important}
+.side .modes .b::after,.side .modes .b::before{display:none!important}
+.tile .ic,.tiles .tile .ic{position:absolute!important;right:-16px!important;top:50%!important;width:96px!important;height:96px!important;transform:translateY(-50%) rotate(-14deg)!important;opacity:1!important}
+.tile .ic svg,.tile .ic svg.ci{width:96px!important;height:96px!important;transform:none!important}
+.tiles>*::after{display:none!important}
+.tile:hover .ic{transform:translateY(-50%) rotate(0) scale(1.08)!important}
+@media (max-width:900px){.tile .ic,.tile .ic svg,.tile .ic svg.ci{width:72px!important;height:72px!important}}
+.k-leg{display:inline-flex!important;flex-wrap:wrap;gap:6px 16px;background:#fff;border:3px solid #141414;border-radius:20px;padding:8px 16px!important;transform:rotate(-.5deg)}
+.side .modes .b{padding-right:44px!important}
 
 </style>
 <style id="custom-css" data-own></style>
